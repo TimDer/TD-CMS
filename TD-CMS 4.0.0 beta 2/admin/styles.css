@@ -1,0 +1,225 @@
+/* custom css */
+
+.br-20 {
+    line-height: 200px;
+}
+.br-19 {
+    line-height: 190px;
+}
+.br-18 {
+    line-height: 180px;
+}
+.br-17 {
+    line-height: 170px;
+}
+.br-16 {
+    line-height: 160px;
+}
+.br-15 {
+    line-height: 150px;
+}
+.br-14 {
+    line-height: 140px;
+}
+.br-13 {
+    line-height: 130px;
+}
+.br-12 {
+    line-height: 120px;
+}
+.br-11 {
+    line-height: 110px;
+}
+.br-10 {
+    line-height: 100px;
+}
+.br-9 {
+    line-height: 90px;
+}
+.br-8 {
+    line-height: 80px;
+}
+.br-7 {
+    line-height: 70px;
+}
+.br-6 {
+    line-height: 60px;
+}
+.br-5 {
+    line-height: 50px;
+}
+.br-4 {
+    line-height: 40px;
+}
+.br-3 {
+    line-height: 30px;
+}
+.br-2 {
+    line-height: 20px;
+}
+.br-1 {
+    line-height: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.setings-pages-order {
+    width: 100%;
+}
+
+.h1-css {
+    margin: 0px;
+}
+
+.textarea-size {
+    width: 100%;
+    height: 250px;
+    resize: vertical;
+}
+
+.add-edit-page {
+    width: 350px;
+}
+
+.li-color {
+    background-color: #222 !important
+}
+
+body {
+    background-color: #222;
+}
+
+.text-field {
+    background-color: #ffffff;
+}
+
+.div-full {
+    min-height: 100vh;
+}
+.space-in-content2 {
+    padding-top: 85px;
+}
+.form-container {
+    padding-bottom: 30px;
+}
+.form-container textarea {
+    resize: vertical;
+    width: 100%;
+}
+
+.media-area-image {
+    height: 150px;
+    width: 150px;
+    color: #fff;
+    font-size: 35px;
+}
+
+.media-modal-image {
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 100%;
+}
+
+.text-color-white {
+    color: #fff;
+}
+
+.hidden-class {
+    display: none !important;
+}
+
+.pages-posts-Padding {
+    padding-bottom: 4px;
+}
+
+.templates-area {
+    height: 300px;
+    width: 300px;
+    color: rgb(0, 214, 29);
+    font-size: 35px;
+    margin: 10px
+}
+
+
+
+
+
+
+
+
+
+/* default css */
+
+hr {
+    border-top: 1px solid #000000;
+}
+
+footer {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #1C3496;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    z-index: 100 !important;
+}
+
+.space-in-content {
+    padding-top: 55px;
+}
+.color-content {
+    background-color: #f1f1f1;
+    min-height: 130%;
+}
+
+.navbar-inverse {
+    border-color: #222;
+}
+
+.h4-color-wit {
+    color: #ffffff;
+}
+
+
+
+.navbar {
+    margin-bottom: 0;
+    border-radius: 0;
+}
+    
+.row.content {height: 450px}
+  
+.sidenav {
+    padding-top: 20px;
+    background-color: #222;
+    /*height: 100%;*/
+    min-height: 100vh;
+}
+    
+footer {
+    background-color: #555;
+    color: white;
+    padding: 15px;
+}
+  
+@media screen and (max-width: 767px) {
+    .sidenav {
+        height: auto;
+        padding: 15px;
+    }
+    .row.content {height:auto;} 
+}
