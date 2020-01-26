@@ -2,7 +2,7 @@
 
 // Include the <ul> tags in the header
 
-function get_ul_database() {
+function get_ul_database($ulClass = "", $liClass = "", $aClass = "") {
     //connect to the database
     require BASE_DIR . "/db.php";
         
@@ -12,10 +12,10 @@ function get_ul_database() {
     
     //this will put the data from the database in a array and from there display it to the user
     if ($result) {
-        echo '<ul class="nav navbar-nav">';
+        echo '<ul class="' . $ulClass . '">';
             
         while($row = mysqli_fetch_assoc($result)) {
-            echo "<li><a href=\"" . BASE_URL . "/" . $row["url"] . "\">" . $row["pagename"] . "</a></li>";
+            echo "<li class=\"" . $liClass . "\"><a class=\"" . $aClass . "\" href=\"" . BASE_URL . "/" . $row["url"] . "\">" . $row["pagename"] . "</a></li>";
         }
             
         echo '</ul>';

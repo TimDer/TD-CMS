@@ -25,7 +25,7 @@ if (isset($_SESSION['user'])) {
             <title>TD-CMS Admin</title>
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1">
-            <link rel="stylesheet" href="<?php echo BASE_URL; ?>/bootstrap/css/bootstrap.min.css">
+            <link rel="stylesheet" href="<?php echo ADMIN_URL; ?>/bootstrap/css/bootstrap.min.css">
             <link rel="stylesheet" href="<?php echo ADMIN_URL; ?>/styles.css">
             </head>
             <body>

@@ -1,6 +1,6 @@
 <?php
 
-// include template functions
+// small functions
 
     function get_tem_header() {
         include TEMP_DIR . "/header.php";
@@ -13,14 +13,16 @@
     }
 
 
-// functions to Include data from the database
+// big code functions
 
-    require BASE_DIR . "/functions/get_min_head.php";
-    require BASE_DIR . "/functions/get-ul-db.php";
-    require BASE_DIR . "/functions/get_content_db.php";
-    require BASE_DIR . "/functions/get_left_sidebar_db.php";
-    require BASE_DIR . "/functions/get_right_sidebar_db.php";
-    require BASE_DIR . "/functions/get_sitename.php";
-    require BASE_DIR . "/functions/get_siteslug.php";
-    require BASE_DIR . "/functions/get_db_footer.php";
-    require BASE_DIR . "/functions/get_custom_css_db.php";
+    $filesFirst = glob("./functions_files/load-first/*.php");
+
+    foreach ($filesFirst as $fileFirst) {
+        require "$fileFirst";
+    }
+
+    $filesSecond = glob("./functions_files/load-second/*.php");
+
+    foreach ($filesSecond as $fileSecond) {
+        require "$fileSecond";
+    }

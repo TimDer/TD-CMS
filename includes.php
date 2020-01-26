@@ -15,7 +15,7 @@ if (file_exists(TEMP_DIR . "/index.php") AND file_exists(TEMP_DIR . "/styles.css
 else {
   echo "please create a template<br><br>";
   echo "the minimum required files are \"styles.css\" and \"index.php\" in the template directory<br>";
-  echo "We also recommend to create a header.php, a footer.php and a home.php<br><br>";
+  echo "We also recommend to create a header.php, a footer.php and a content.php<br><br>";
   
   // This piece of code is used to troubleshoot the required files (index.php and styles.css)
   if (file_exists(TEMP_DIR . "/index.php")) {

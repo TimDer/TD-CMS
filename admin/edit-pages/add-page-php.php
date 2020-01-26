@@ -10,7 +10,7 @@ if (isset($_SESSION['user'])) {
 
     require BASE_DIR . "/db.php";
 
-    if (isset($_POST['content']) AND isset($_POST['pagename'])) {
+    if (isset($_POST['pagename'])) {
         
         $randomUrl      = md5(date("ymd") . time() . mt_rand(0,100000));
 

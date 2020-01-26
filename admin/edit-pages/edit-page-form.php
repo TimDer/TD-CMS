@@ -29,7 +29,7 @@ if (isset($_SESSION['user'])) {
                 </div>
                 <div class="col-sm-6 page-spase">
                     Pagename is: <br><input type="text" name="pagename" value="<?php echo $row['pagename']; ?>" required><br><br>
-                    Content: <br><textarea class="mytextarea textarea-size" type="test" name="content" required><?php echo $row['content']; ?></textarea><br><br>
+                    Content: <br><textarea class="mytextarea textarea-size" type="test" name="content"><?php echo $row['content']; ?></textarea><br><br>
                 </div>
                 <div class="col-sm-3 page-spase">
                     Right sidebar name: <br><input type="text" name="rsidebarname" value="<?php echo $row['rsidebarname']; ?>"><br><br>

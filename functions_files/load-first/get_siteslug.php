@@ -6,7 +6,7 @@ function get_siteslug() {
     $sql    = "SELECT * FROM settings";
     $query  = mysqli_query($conn,$sql);
 
-    if ($query) {
+    if ($query->num_rows > 0) {
         while ($row = mysqli_fetch_assoc($query)) {
             echo $row['sideslug'];
         }

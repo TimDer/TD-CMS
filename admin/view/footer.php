@@ -6,8 +6,8 @@ if (!isset($start)) {
 
 if (isset($_SESSION['user'])) {
 ?>
-<script src="<?php echo BASE_URL; ?>/bootstrap/js/jquery.min.js"></script>
-<script src="<?php echo BASE_URL; ?>/bootstrap/js/bootstrap.min.js"></script>
+<script src="<?php echo ADMIN_URL; ?>/bootstrap/js/jquery.min.js"></script>
+<script src="<?php echo ADMIN_URL; ?>/bootstrap/js/bootstrap.min.js"></script>
 <script src='<?php echo ADMIN_URL; ?>/apis/tinymce/tinymce.min.js'></script>
 <script src='<?php echo ADMIN_URL; ?>/apis/tinymce/init-tinymce.js'></script>
 </body>

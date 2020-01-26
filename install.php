@@ -143,7 +143,7 @@ if (isset($_POST['submit'])) {
 
 <head>
     <meta scarset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ADMIN_URL; ?>/bootstrap/css/bootstrap.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         .width-7 {

@@ -19,7 +19,7 @@ if (isset($_SESSION['user'])) {
         </div>
         <div class="col-sm-6 page-spase">
             Pagename is: <br><input type="text" name="pagename" required><br><br>
-            Content: <br><textarea class="textarea-size" type="test" name="content" required></textarea><br><br>
+            Content: <br><textarea class="textarea-size" type="test" name="content"></textarea><br><br>
         </div>
         <div class="col-sm-3 page-spase">
             Right sidebar name: <br><input type="text" name="rsidebarname"><br><br>

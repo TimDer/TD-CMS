@@ -24,8 +24,6 @@ if (isset($_SESSION['user'])) {
 
     //url, home and the id
     $homepage           = mysqli_real_escape_string($conn, $_POST['homepage']);
-    //$url                = mysqli_real_escape_string($conn, $_POST['url']);
-    //$post_page          = mysqli_real_escape_string($conn, $_POST['post']);
     $id                 = mysqli_real_escape_string($conn, $_POST['id']);
 
 

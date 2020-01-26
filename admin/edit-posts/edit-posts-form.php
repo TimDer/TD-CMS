@@ -52,7 +52,7 @@ if (isset($_SESSION['user'])) {
                             POST Name:
                         </div>
                         <div class="col-sm-10">
-                            <input type="text" name="post_name" value="<?php echo $row['post_name'] ?>">
+                            <input type="text" name="post_name" value="<?php echo htmlentities($row['post_name']) ?>">
                         </div>
                     </div>
                     <div class="col-sm-12 form-container">
@@ -60,7 +60,7 @@ if (isset($_SESSION['user'])) {
                             POST lable 1:
                         </div>
                         <div class="col-sm-10">
-                            <textarea rows="6" name="POST_lable_1"><?php echo $row['post_1'] ?></textarea>
+                            <textarea rows="6" name="POST_lable_1"><?php echo htmlentities($row['post_1']); ?></textarea>
                         </div>
                     </div>
                     <div class="col-sm-12 form-container">
@@ -68,7 +68,7 @@ if (isset($_SESSION['user'])) {
                             POST lable 2:
                         </div>
                         <div class="col-sm-10">
-                            <textarea rows="6" name="POST_lable_2"><?php echo $row['post_2'] ?></textarea>
+                            <textarea rows="6" name="POST_lable_2"><?php echo htmlentities($row['post_2']); ?></textarea>
                         </div>
                     </div>
                     <div class="col-sm-12 form-container">
@@ -76,7 +76,7 @@ if (isset($_SESSION['user'])) {
                             POST lable 3:
                         </div>
                         <div class="col-sm-10">
-                            <textarea class="mytextarea" rows="6" name="POST_lable_3"><?php echo $row['post_3'] ?></textarea>
+                            <textarea class="mytextarea" rows="6" name="POST_lable_3"><?php echo htmlentities($row['post_3']) ?></textarea>
                         </div>
                     </div>
                 </h3>
