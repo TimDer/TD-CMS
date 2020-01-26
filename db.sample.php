@@ -1,9 +1,9 @@
 <?php
 
-$servername	= "localhost";
-$username	= "root";
-$password	= "Admin";
-$dbname		= "xcms";
+$servername	= "";
+$username	= "";
+$password	= "";
+$dbname		= "";
 
 // create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
