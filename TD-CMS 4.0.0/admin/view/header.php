@@ -45,7 +45,7 @@ if (isset($_SESSION['user'])) {
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>                        
                             </button>
-                            <p class="navbar-brand">TD-CMS 4.0.0 beta 3</p>
+                            <p class="navbar-brand">TD-CMS 4.0.0</p>
                             <!--<a class="navbar-brand" href="#">TD-CMS</a>-->
                         </div>
                         <div class="collapse navbar-collapse" id="myNavbar">

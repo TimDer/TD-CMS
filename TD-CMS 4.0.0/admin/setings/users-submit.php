@@ -13,7 +13,7 @@ if (isset($_SESSION['user'])) {
 	if (isset($_GET['edituser'])) {
 
         $username               = mysqli_real_escape_string($conn, $_POST['username']);
-        $password               = mysqli_real_escape_string($conn, sha1($_POST['password']));
+        $password               = mysqli_real_escape_string($conn, hash("sha512", $_POST['password']));
         $delpages               = $_POST['delpages'];
         $set_home_page          = $_POST['set_home_page'];
         $set_theorder           = $_POST['set_theorder'];
@@ -91,7 +91,7 @@ if (isset($_SESSION['user'])) {
     }
     elseif (isset($_GET['adduser'])) {
         $username   = mysqli_real_escape_string($conn, $_POST['username']);
-        $password   = mysqli_real_escape_string($conn, sha1($_POST['password']));
+        $password   = mysqli_real_escape_string($conn, hash("sha512", $_POST['password']));
 
         $sqlAddUser = "INSERT INTO users (user,
                                             password,

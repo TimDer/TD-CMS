@@ -6,7 +6,7 @@ if (isset($_POST['submit'])) {
     $file_content[34] = "define('URL_DIR', '" . $_POST['installationDirectory'] . "');\n";
 
     $start_php = fopen("./start.php", "w+") or die("Couldn't create start.php");
-    foreach ($file_content as $file_content_number => $file_content_value) {
+    foreach ($file_content as $file_content_value) {
         fwrite($start_php, $file_content_value);
     }
     fclose($start_php);
@@ -57,7 +57,7 @@ else {
 
             // put the user in the users table
             $username = mysqli_real_escape_string($conn, $_POST['username']);
-            $password = mysqli_real_escape_string($conn, sha1($_POST['password']));
+            $password = mysqli_real_escape_string($conn, hash("sha512", $_POST['password']));
 
             $TablesSQL = "CREATE TABLE `page` (`id` int(255) NOT NULL AUTO_INCREMENT,
                                                 `pagename` varchar(100) NOT NULL,

@@ -43,7 +43,7 @@
 <div class="width-7 content1 center">
     <div class="width-8 center spase">
         <?php if (!isset($_GET['done'])) { ?>
-            <h2>fill out the next form to upgrade TD-CMS to version 4.0.0 beta 3</h2><br>
+            <h2>fill out the next form to upgrade TD-CMS to version 4.0.0</h2><br>
             <form action="upgrade.php" method="POST">
                 <h4>
                     <?php /* =============== warning =============== */ ?>
@@ -52,7 +52,7 @@
                             <div class="warning-ul">
                                 <h4>
                                     <ul>
-                                        <li>This upgrade is only supported for TD-CMS 4.0.0 beta 1 and beta 2</li>
+                                        <li>This upgrade is only supported for TD-CMS 4.0.0 beta 1 and newer</li>
                                         <li>This upgrade might override start.php</li>
                                         <li>This upgrade will delete download_helper.php (if you're running on 4.0.0 beta 1)</li>
                                         <li>Create a backup before proceeding</li>
@@ -66,7 +66,8 @@
                         <h3>On which version are you running?</h3>
                         <div>
                             version 4.0.0 beta 1 <input type="radio" name="version" value="4.0.0-beta-1" required> &nbsp; &nbsp; &nbsp; &nbsp;
-                            version 4.0.0 beta 2 <input type="radio" name="version" value="4.0.0-beta-2" required>
+                            version 4.0.0 beta 2 <input type="radio" name="version" value="4.0.0-beta-2" required> &nbsp; &nbsp; &nbsp; &nbsp;
+                            A newer version <input type="radio" name="version" value="newer-version" required>
                         </div><br>
 
                     <?php /* =============== radio version button =============== */ ?>

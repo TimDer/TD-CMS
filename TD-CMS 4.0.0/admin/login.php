@@ -2,6 +2,13 @@
 
 session_start();
 
+function updateUserPassword($username, $password, $conn) {
+    $sql    = "UPDATE users SET password='$password' WHERE user='$username'";
+    $query  = mysqli_query($conn, $sql);
+
+    return $query;
+}
+
 require "../start.php";
 
 require BASE_DIR . "/db.php";
@@ -12,12 +19,13 @@ if (isset($_POST['login'])) {
         die();
     }
     else {
-        $username       = mysqli_real_escape_string($conn, $_POST['username']);
-        $password       = mysqli_real_escape_string($conn, sha1($_POST['password']));
+        $username           = mysqli_real_escape_string($conn, $_POST['username']);
+        $password_sha1      = mysqli_real_escape_string($conn, sha1($_POST['password']));
+        $password_sha512    = mysqli_real_escape_string($conn, hash("sha512", $_POST['password']));
 
-        $sqlLogin       = "SELECT * FROM users WHERE user='$username'";
-        $query          = mysqli_query($conn, $sqlLogin);
-        $resultCheck    = mysqli_num_rows($query);
+        $sqlLogin           = "SELECT * FROM users WHERE user='$username'";
+        $query              = mysqli_query($conn, $sqlLogin);
+        $resultCheck        = mysqli_num_rows($query);
 
         if (!$resultCheck > 0) {
             header('Location: ' . ADMIN_URL . '/login.php?login=error');
@@ -25,11 +33,23 @@ if (isset($_POST['login'])) {
         }
         else {
             if ($row = mysqli_fetch_assoc($query)) {
-                if ($password === $row['password']) {
+                if ($password_sha512 === $row['password']) {
                     $_SESSION['id']                 = $row['id'];
                     $_SESSION['user']               = $row['user'];
                     $_SESSION['time']               = time();
                     header('Location: ' . ADMIN_URL);
+                }
+                elseif ($password_sha1 === $row['password']) {
+                    if (updateUserPassword($username, $password_sha512, $conn)) {
+                        $_SESSION['id']                 = $row['id'];
+                        $_SESSION['user']               = $row['user'];
+                        $_SESSION['time']               = time();
+                        header('Location: ' . ADMIN_URL);
+                    }
+                    else {
+                        header("Location: " . ADMIN_URL . "/login.php?login=error");
+					    exit();
+                    }
                 }
                 else {
                     header("Location: " . ADMIN_URL . "/login.php?login=error");
