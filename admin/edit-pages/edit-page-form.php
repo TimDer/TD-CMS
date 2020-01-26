@@ -54,11 +54,13 @@ if (isset($_SESSION['user'])) {
                     </div>
                     <div class="col-sm-5">
                         <p>url</p>
-                        <p><?php echo BASE_URL . '/ '; ?><input type="text" name="url" value="<?php echo $row['url']; ?>" required><p>
+                        <p><?php echo BASE_URL . '/ '; ?><input type="text" name="url" value="<?php echo $row['url']; ?>"><p>
                     </div>
                     <div class="col-sm-4">
-                        <p>if this is a post page, fil out this form too.</p>
-                        <input type="text" name="post" value="<?php echo $row['post_page']; ?>">
+                        <p>is this a post page?</p>
+                        <!--  <input type="text" name="post" value="<?php echo $row['post_page']; ?>">  -->
+                        <input type="radio" name="post" value="yes" <?php if ($row['post_page'] !== '') { echo 'checked'; } ?>> yes
+                        <input type="radio" name="post" value="no" <?php if ($row['post_page'] == '') { echo 'checked'; } ?>> no
                     </div>
                 </div>
                 <input type="hidden" name="id" value="<?php echo $row['id']; ?>">

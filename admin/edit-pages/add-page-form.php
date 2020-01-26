@@ -45,11 +45,12 @@ if (isset($_SESSION['user'])) {
             </div>
             <div class="col-sm-5">
                 <p>url</p>
-                <p><?php echo BASE_URL . '/ '; ?><input type="text" name="url" required></p>
+                <p><?php echo BASE_URL . '/ '; ?><input type="text" name="url"></p>
             </div>
             <div class="col-sm-4">
-                <p>if this is a post page, fil out this form too.</p>
-                <input type="text" name="post">
+                <p>is this a post page?</p>
+                <input type="radio" name="post" value="yes"> yes
+                <input type="radio" name="post" value="no" checked> no
             </div>
         </div>
     <form>

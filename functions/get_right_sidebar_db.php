@@ -17,18 +17,25 @@ function get_right_sidebar_database() {
             $result = mysqli_query($conn,$SelectPageTabel);
             
 
-            while($row = mysqli_fetch_assoc($result)) {
-                if ($row['rsidebarname'] !== '' OR $row['rsidebar'] !== '') {
-                    echo "<h1>" . $row['rsidebarname'] . "</h1>";
-                    echo "<p>" . $row['rsidebar'] . "</p>";
-                }
-                else {
-                    if (file_exists(TEMP_DIR . '/sidebar_right.php')) {
-                        require TEMP_DIR . '/sidebar_right.php';
+            if ($result->num_rows > 0) {
+                while($row = mysqli_fetch_assoc($result)) {
+                    if ($row['rsidebarname'] !== '' OR $row['rsidebar'] !== '') {
+                        echo "<h1>" . $row['rsidebarname'] . "</h1>";
+                        echo "<p>" . $row['rsidebar'] . "</p>";
                     }
                     else {
-                        echo '<h1>No results</h1>';
+                        if (file_exists(TEMP_DIR . '/sidebar_right.php')) {
+                            require TEMP_DIR . '/sidebar_right.php';
+                        }
+                        else {
+                            echo '<h1>No results</h1>';
+                        }
                     }
+                }
+            }
+            else {
+                if (file_exists(TEMP_DIR . '/sidebar_right.php')) {
+                    require TEMP_DIR . '/sidebar_right.php';
                 }
             }
         }
@@ -45,19 +52,25 @@ function get_right_sidebar_database() {
                                 WHERE home_page = '$url' ";
             $result = mysqli_query($conn,$SelectPageTabel);
 
-
-            while($row = mysqli_fetch_assoc($result)) {
-                if ($row['rsidebarname'] !== '' OR $row['rsidebar'] !== '') {
-                    echo "<h1>" . $row['rsidebarname'] . "</h1>";
-                    echo "<p>" . $row['rsidebar'] . "</p>";
-                }
-                else {
-                    if (file_exists(TEMP_DIR . '/sidebar_right.php')) {
-                        require TEMP_DIR . '/sidebar_right.php';
+            if ($result->num_rows > 0) {
+                while($row = mysqli_fetch_assoc($result)) {
+                    if ($row['rsidebarname'] !== '' OR $row['rsidebar'] !== '') {
+                        echo "<h1>" . $row['rsidebarname'] . "</h1>";
+                        echo "<p>" . $row['rsidebar'] . "</p>";
                     }
                     else {
-                        echo '<h1>No results</h1>';
+                        if (file_exists(TEMP_DIR . '/sidebar_right.php')) {
+                            require TEMP_DIR . '/sidebar_right.php';
+                        }
+                        else {
+                            echo '<h1>No results</h1>';
+                        }
                     }
+                }
+            }
+            else {
+                if (file_exists(TEMP_DIR . '/sidebar_right.php')) {
+                    require TEMP_DIR . '/sidebar_right.php';
                 }
             }
         }

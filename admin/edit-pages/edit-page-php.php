@@ -8,6 +8,8 @@ if (isset($_SESSION['user'])) {
 
     require_once BASE_DIR . '/db.php';
 
+    $randomUrl      = md5(date("ymd") . time() . mt_rand(0,100000));
+
     //left sideber
     $leftSidebarName    = mysqli_real_escape_string($conn, $_POST['lsidebarname']);
     $leftSideber        = mysqli_real_escape_string($conn, $_POST['lsidebar']);
@@ -22,9 +24,32 @@ if (isset($_SESSION['user'])) {
 
     //url, home and the id
     $homepage           = mysqli_real_escape_string($conn, $_POST['homepage']);
-    $url                = mysqli_real_escape_string($conn, $_POST['url']);
-    $post_page          = mysqli_real_escape_string($conn, $_POST['post']);
+    //$url                = mysqli_real_escape_string($conn, $_POST['url']);
+    //$post_page          = mysqli_real_escape_string($conn, $_POST['post']);
     $id                 = mysqli_real_escape_string($conn, $_POST['id']);
+
+
+    if ($_POST['post'] === 'yes') {
+        if (empty($_POST['url'])) {
+            $post_page      = $randomUrl;
+            $url            = $randomUrl;
+        }
+        else {
+            $post_page      = mysqli_real_escape_string($conn, $_POST['url']);
+            $url            = mysqli_real_escape_string($conn, $_POST['url']);
+        }
+    }
+    else {
+        if (empty($_POST['url'])) {
+            $post_page      = '';
+            $url            = $randomUrl;
+        }
+        else {
+            $post_page      = '';
+            $url            = mysqli_real_escape_string($conn, $_POST['url']);
+        }
+    }
+
 
     //update the database
     $update = "UPDATE page SET  pagename='$pageName',

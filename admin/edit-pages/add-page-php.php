@@ -11,6 +11,10 @@ if (isset($_SESSION['user'])) {
     require BASE_DIR . "/db.php";
 
     if (isset($_POST['content']) AND isset($_POST['pagename'])) {
+        
+        $randomUrl      = md5(date("ymd") . time() . mt_rand(0,100000));
+
+
         // content
         $content        = mysqli_real_escape_string($conn, $_POST['content']);
         $pagename       = mysqli_real_escape_string($conn, $_POST['pagename']);
@@ -25,11 +29,30 @@ if (isset($_SESSION['user'])) {
 
         // necessary stuff
         $homePage       = mysqli_real_escape_string($conn, $_POST['homepage']);
-        $url            = mysqli_real_escape_string($conn, $_POST['url']);
-        $post_page      = mysqli_real_escape_string($conn, $_POST['post']);
+        if ($_POST['post'] === 'yes') {
+            if (empty($_POST['url'])) {
+                $post_page      = $randomUrl;
+                $url            = $randomUrl;
+            }
+            else {
+                $post_page      = mysqli_real_escape_string($conn, $_POST['url']);
+                $url            = mysqli_real_escape_string($conn, $_POST['url']);
+            }
+        }
+        else {
+            if (empty($_POST['url'])) {
+                $post_page      = '';
+                $url            = $randomUrl;
+            }
+            else {
+                $post_page      = '';
+                $url            = mysqli_real_escape_string($conn, $_POST['url']);
+            }
+        }
+        
 
 
-        // Add the data to the database
+        // Adding the data into the database
         $sql = "INSERT INTO page (pagename,
                                     content,
                                     lsidebarname,

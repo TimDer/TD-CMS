@@ -3,7 +3,7 @@
 // Include the content
 
 function get_content_database() {
-    if (isset($_GET['page'])) {
+    if (!empty($_GET['page'])) {
         require BASE_DIR . "/db.php";
 
         $url = mysqli_real_escape_string($conn, $_GET['page']);
@@ -17,7 +17,7 @@ function get_content_database() {
             while($row = mysqli_fetch_assoc($result)) {
                 if ($row['post_page'] === '') {
                     echo "<h1>" . $row['pagename'] . "</h1>";
-                    echo "<p>" . $row['content'] . "</p>";
+                    echo $row['content'];
                 }
                 if (!isset($postAllif)) {
                     $postAll            = $row['post_page'];
@@ -57,7 +57,7 @@ function get_content_database() {
                     }
                     else {
                         echo "<h1>" . $row['pagename'] . "</h1>";
-                        echo "<p>" . $row['content'] . "</p>";
+                        echo $row['content'];
                         if (file_exists(TEMP_DIR . '/postsall.php')) {
                             if ($resultPostsAll->num_rows > 0) {
                                 while ($rowPostsAll = mysqli_fetch_assoc($resultPostsAll)) {
@@ -152,9 +152,20 @@ function get_content_database() {
                             FROM page
                             WHERE home_page = '$url' ";
         $result = mysqli_query($conn,$SelectPageTable);
-        while($row = mysqli_fetch_assoc($result)) {
-            echo "<h1>" . $row['pagename'] . "</h1>";
-            echo "<p>" . $row['content'] . "</p>";
+
+        if ($result->num_rows > 0) {
+            while($row = mysqli_fetch_assoc($result)) {
+                echo "<h1>" . $row['pagename'] . "</h1>";
+                echo $row['content'];
+            }
+        }
+        else {
+            if (file_exists(TEMP_DIR . '/404.php')) {
+                require TEMP_DIR . '/404.php';
+            }
+            else {
+                echo 'test';
+            }
         }
     }
     $conn->close();
