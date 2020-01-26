@@ -1,4 +1,4 @@
-<?php require 'config.php'; ?>
+<?php require __DIR__ . '/config.php'; ?>
 
 <!DOCTYPE html>
 <html>
@@ -43,9 +43,33 @@
 <div class="width-7 content1 center">
     <div class="width-8 center spase">
         <?php if (!isset($_GET['done'])) { ?>
-            <h2>fill out the next form to upgrade TD-CMS to version 4.0.0 beta 2</h2><br>
+            <h2>fill out the next form to upgrade TD-CMS to version 4.0.0 beta 3</h2><br>
             <form action="upgrade.php" method="POST">
                 <h4>
+                    <?php /* =============== warning =============== */ ?>
+                        <div>
+                            <h3>Warning:</h3>
+                            <div class="warning-ul">
+                                <h4>
+                                    <ul>
+                                        <li>This upgrade is only supported for TD-CMS 4.0.0 beta 1 and beta 2</li>
+                                        <li>This upgrade might override start.php</li>
+                                        <li>This upgrade will delete download_helper.php (if you're running on 4.0.0 beta 1)</li>
+                                        <li>Create a backup before proceeding</li>
+                                    </ul>
+                                </h4>
+                            </div>
+                        </div><br>
+                    <?php /* =============== /warning =============== */ ?>
+                    <?php /* =============== radio version button =============== */ ?>
+
+                        <h3>On which version are you running?</h3>
+                        <div>
+                            version 4.0.0 beta 1 <input type="radio" name="version" value="4.0.0-beta-1" required> &nbsp; &nbsp; &nbsp; &nbsp;
+                            version 4.0.0 beta 2 <input type="radio" name="version" value="4.0.0-beta-2" required>
+                        </div><br>
+
+                    <?php /* =============== radio version button =============== */ ?>
                     <?php /* =============== Edit start.php =============== */ ?>
                         <h3>installation directory</h3>
                         <div>
@@ -54,25 +78,14 @@
                                 <input class="form-control" type="text" name="installationDirectory" placeholder="if it's installed in the root of the server leve this empty">
                             </div>
                         </div><br><br>
-                    <?php /* =============== Edit start.php =============== */ ?>
+                    <?php /* =============== /Edit start.php =============== */ ?>
                     <br>
 
-                    <div>
-                        <input class="btn btn-primary form-control" type="submit" name="submit" value="Upgrade">
-                    </div>
-                    <div>
-                        <h3>warning:</h3>
-                        <div class="warning-ul">
-                            <h4>
-                                <ul>
-                                    <li>Upgrading is only supported for TD-CMS 4.0.0 beta 1 to beta 2</li>
-                                    <li>This upgrade will override start.php</li>
-                                    <li>This upgrade will delete download_helper.php</li>
-                                    <li>Create a backup before proceeding</li>
-                                </ul>
-                            </h4>
+                    <?php /* =============== submit button =============== */ ?>
+                        <div>
+                            <input class="btn btn-primary form-control" type="submit" name="submit" value="Upgrade">
                         </div>
-                    </div>
+                    <?php /* =============== /submit button =============== */ ?>
                 </h4>
             </form>
         <?php } else { ?>
