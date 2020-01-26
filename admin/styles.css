@@ -61,6 +61,18 @@
     line-height: 10px;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
 .setings-pages-order {
     width: 100%;
 }
@@ -73,12 +85,6 @@
     width: 100%;
     height: 250px;
     resize: vertical;
-}
-
-.sidebar-admin-panel {
-    /*position: fixed;
-    z-index: 100;
-    right: 8%;*/
 }
 
 .add-edit-page {
@@ -111,12 +117,30 @@ body {
     width: 100%;
 }
 
+.media-area-image {
+    height: 150px;
+    width: 150px;
+    color: #fff;
+    font-size: 35px;
+}
 
+.media-modal-image {
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 100%;
+}
 
+.text-color-white {
+    color: #fff;
+}
 
+.hidden-class {
+    display: none !important;
+}
 
-
-
+.pages-posts-Padding {
+    padding-bottom: 4px;
+}
 
 
 

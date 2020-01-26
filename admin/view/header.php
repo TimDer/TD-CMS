@@ -22,11 +22,11 @@ if (isset($_SESSION['user'])) {
             <!DOCTYPE html>
             <html lang="en">
             <head>
-            <title>TD-CMS Admin</title>
-            <meta charset="utf-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <link rel="stylesheet" href="<?php echo ADMIN_URL; ?>/bootstrap/css/bootstrap.min.css">
-            <link rel="stylesheet" href="<?php echo ADMIN_URL; ?>/styles.css">
+                <title>TD-CMS Admin</title>
+                <meta charset="utf-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                <link rel="stylesheet" href="<?php echo ADMIN_URL; ?>/bootstrap/css/bootstrap.min.css">
+                <link rel="stylesheet" href="<?php echo ADMIN_URL; ?>/styles.css">
             </head>
             <body>
 
@@ -39,12 +39,12 @@ if (isset($_SESSION['user'])) {
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>                        
                             </button>
-                            <p class="navbar-brand">TD-CMS</p>
+                            <p class="navbar-brand">TD-CMS 4.0.0 beta 1</p>
                             <!--<a class="navbar-brand" href="#">TD-CMS</a>-->
                         </div>
                         <div class="collapse navbar-collapse" id="myNavbar">
                             <ul class="nav navbar-nav li-color">
-                                <li><a href="<?php echo ADMIN_URL; ?>/index.php">Dashboard</a></li>
+                                <li><a href="<?php echo ADMIN_URL; ?>/dashboard.php">Dashboard</a></li>
                                 <?php
                                     if ($rowPermissionHeader['edit_pages'] === 'yes' OR $rowPermissionHeader['add_pages'] === 'yes') {
                                         ?>
@@ -60,13 +60,27 @@ if (isset($_SESSION['user'])) {
                                     }
                                 ?>
                                 <?php
+                                    if ($rowPermissionHeader['modify_media'] === 'yes') {
+                                        ?>
+                                        <li><a href="<?php echo ADMIN_URL; ?>/media.php">media</a></li>
+                                        <?php
+                                    }
+                                ?>
+                                <?php
+                                    if ($rowPermissionHeader['modify_downloads'] === 'yes') {
+                                        ?>
+                                        <li><a href="<?php echo ADMIN_URL; ?>/downloads.php">Downloads</a></li>
+                                        <?php
+                                    }
+                                ?>
+
+                                <?php
                                     if ($rowPermissionHeader['deletepages'] === 'yes' OR $rowPermissionHeader['set_home_page'] === 'yes' OR $rowPermissionHeader['set_theorder'] === 'yes' OR $rowPermissionHeader['set_footer'] === 'yes' OR $rowPermissionHeader['set_css'] === 'yes' OR $rowPermissionHeader['edit_posts'] === 'yes' OR $rowPermissionHeader['delete_post'] === 'yes' OR $rowPermissionHeader['edit_general_settings'] === 'yes' OR $rowPermissionHeader['add_or_edit_users'] === 'yes') {
                                         ?>
                                         <li><a href="<?php echo ADMIN_URL; ?>/setings.php">Settings</a></li>
                                         <?php
                                     }
                                 ?>
-                                <li><a href="<?php echo ADMIN_URL; ?>/phpinfo.php">phpinfo();</a></li>
                             </ul>
                             <div class="col-sm-1">
                                 <form action="<?php echo ADMIN_URL; ?>/login.php" method="GET">
@@ -74,7 +88,7 @@ if (isset($_SESSION['user'])) {
                                 </form>
                             </div>
                             <ul class="nav navbar-nav navbar-right">
-                                <li><a href="<?php echo BASE_URL; ?>"><span class="glyphicon glyphicon-log-in"></span> go to the home page</a></li>
+                                <li><a href="<?php echo BASE_URL; ?>" target="_blank"><span class="glyphicon glyphicon-log-in"></span> go to the home page</a></li>
                             </ul>
                         
                         </div>

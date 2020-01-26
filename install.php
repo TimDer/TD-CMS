@@ -7,69 +7,70 @@ $done = FALSE;
 if (isset($_POST['submit'])) {
     require_once BASE_DIR . '/db.php';
 
-    $sqlPage = "CREATE TABLE IF NOT EXISTS page (id int(255) NOT NULL AUTO_INCREMENT,
-                                                    pagename varchar(100) NOT NULL,
-                                                    content text NOT NULL,
-                                                    lsidebarname varchar(50) NOT NULL,
-                                                    rsidebarname varchar(50) NOT NULL,
-                                                    lsidebar text NOT NULL,
-                                                    rsidebar text NOT NULL,
-                                                    home_page varchar(3) NOT NULL,
-                                                    url text NOT NULL,
-                                                    theorder int(255) NOT NULL,
-                                                    post_page text NOT NULL,
-                                                    PRIMARY KEY (`id`)
-                                                    ) ENGINE=InnoDB  DEFAULT CHARSET=latin1";
+    $sqlPage = "CREATE TABLE page (id int(255) NOT NULL AUTO_INCREMENT,
+                                    pagename varchar(100) NOT NULL,
+                                    content text NOT NULL,
+                                    lsidebarname varchar(50) NOT NULL,
+                                    rsidebarname varchar(50) NOT NULL,
+                                    lsidebar text NOT NULL,
+                                    rsidebar text NOT NULL,
+                                    home_page varchar(3) NOT NULL,
+                                    url text NOT NULL,
+                                    theorder int(255) NOT NULL,
+                                    post_page text NOT NULL,
+                                    PRIMARY KEY (`id`)
+                                    ) ENGINE=InnoDB  DEFAULT CHARSET=latin1";
 
     if (mysqli_query($conn, $sqlPage) === TRUE) {
-        $sqlSettings = "CREATE TABLE IF NOT EXISTS settings (id int(255) NOT NULL AUTO_INCREMENT,
-                                                                sidename text NOT NULL,
-                                                                sideslug text NOT NULL,
-                                                                footer text NOT NULL,
-                                                                footerclass text NOT NULL,
-                                                                customcss text NOT NULL,
-                                                                PRIMARY KEY (`id`)
-                                                                ) ENGINE=InnoDB  DEFAULT CHARSET=latin1;";
+        $sqlSettings = "CREATE TABLE settings (id int(255) NOT NULL AUTO_INCREMENT,
+                                                sidename text NOT NULL,
+                                                sideslug text NOT NULL,
+                                                footer text NOT NULL,
+                                                footerclass text NOT NULL,
+                                                customcss text NOT NULL,
+                                                PRIMARY KEY (`id`)
+                                                ) ENGINE=InnoDB  DEFAULT CHARSET=latin1;";
         
         if (mysqli_query($conn, $sqlSettings) === TRUE) {
-            $sqlUsers = "CREATE TABLE IF NOT EXISTS users (id int(255) NOT NULL AUTO_INCREMENT,
-                                                            user text NOT NULL,
-                                                            password text NOT NULL,
-                                                            deletepages text NOT NULL,
-                                                            set_home_page text NOT NULL,
-                                                            set_theorder text NOT NULL,
-                                                            set_footer text NOT NULL,
-                                                            set_css text NOT NULL,
-                                                            edit_pages text NOT NULL,
-                                                            add_pages text NOT NULL,
-                                                            edit_posts text NOT NULL,
-                                                            add_posts text NOT NULL,
-                                                            delete_post text NOT NULL,
-                                                            edit_general_settings text NOT NULL,
-                                                            add_or_edit_users text NOT NULL,
-                                                            delete_this_user text NOT NULL,
-                                                            PRIMARY KEY (`id`)
-                                                            ) ENGINE=InnoDB  DEFAULT CHARSET=latin1;";
+            $sqlUsers = "CREATE TABLE users (id int(255) NOT NULL AUTO_INCREMENT,
+                                            user text NOT NULL,
+                                            password text NOT NULL,
+                                            deletepages text NOT NULL,
+                                            set_home_page text NOT NULL,
+                                            set_theorder text NOT NULL,
+                                            set_footer text NOT NULL,
+                                            set_css text NOT NULL,
+                                            edit_pages text NOT NULL,
+                                            add_pages text NOT NULL,
+                                            edit_posts text NOT NULL,
+                                            add_posts text NOT NULL,
+                                            delete_post text NOT NULL,
+                                            edit_general_settings text NOT NULL,
+                                            add_or_edit_users text NOT NULL,
+                                            `modify_media` text NOT NULL,
+                                            `modify_downloads` text NOT NULL,
+                                            delete_this_user text NOT NULL,
+                                            PRIMARY KEY (`id`)
+                                            ) ENGINE=InnoDB  DEFAULT CHARSET=latin1;";
             
             if (mysqli_query($conn, $sqlUsers) === TRUE) {
                 $sidename = $_POST['sidename'];
                 $sideslug = $_POST['sideslug'];
 
-                $sqlSettingsUpdate = "INSERT INTO settings (sidename, sideslug) 
-                                        VALUES ('$sidename', '$sideslug');";
+                $sqlSettingsUpdate = "INSERT INTO `settings` (`id`, `sidename`, `sideslug`, `footer`, `footerclass`, `customcss`) VALUES (NULL, '$sidename', '$sideslug', '', '', '');";
                 
                 if (mysqli_query($conn, $sqlSettingsUpdate) === TRUE) {
-                    $sqlPost = "CREATE TABLE IF NOT EXISTS posts (id int(255) NOT NULL AUTO_INCREMENT,
-                                                                category varchar(100) NOT NULL,
-                                                                post_name text NOT NULL,
-                                                                post_1 text NOT NULL,
-                                                                post_2 text NOT NULL,
-                                                                post_3 text NOT NULL,
-                                                                date_added text NOT NULL,
-                                                                date_edited text NOT NULL,
-                                                                url text NOT NULL,
-                                                                PRIMARY KEY (`id`)
-                                                                ) ENGINE=InnoDB  DEFAULT CHARSET=latin1;";
+                    $sqlPost = "CREATE TABLE posts (id int(255) NOT NULL AUTO_INCREMENT,
+                                                    category varchar(100) NOT NULL,
+                                                    post_name text NOT NULL,
+                                                    post_1 text NOT NULL,
+                                                    post_2 text NOT NULL,
+                                                    post_3 text NOT NULL,
+                                                    date_added text NOT NULL,
+                                                    date_edited text NOT NULL,
+                                                    url text NOT NULL,
+                                                    PRIMARY KEY (`id`)
+                                                    ) ENGINE=InnoDB  DEFAULT CHARSET=latin1;";
                     
                     if (mysqli_query($conn, $sqlPost)) {
                         $username           = mysqli_real_escape_string($conn, $_POST['username']);
@@ -90,6 +91,8 @@ if (isset($_POST['submit'])) {
                                                                 delete_post,
                                                                 edit_general_settings,
                                                                 add_or_edit_users,
+                                                                modify_media,
+                                                                modify_downloads,
                                                                 delete_this_user)
                                                                 VALUES
                                                                 ('$username',
@@ -106,10 +109,31 @@ if (isset($_POST['submit'])) {
                                                                 'yes',
                                                                 'yes',
                                                                 'yes',
+                                                                'yes',
+                                                                'yes',
                                                                 '$delete_this_user');";
                         
                         if (mysqli_query($conn, $sqlUsersUpdate) === TRUE) {
-                            $done = TRUE;
+                            $sqlDownloads   = "CREATE TABLE `downloads` (`id` int(255) NOT NULL AUTO_INCREMENT,
+                                                                        `the_file_name` text NOT NULL,
+                                                                        `sha1_download` text NOT NULL,
+                                                                        PRIMARY KEY (`id`)
+                                                                        ) ENGINE=InnoDB DEFAULT CHARSET=latin1;";
+
+                            if (mysqli_query($conn, $sqlDownloads)) {
+                                $sqlMedia   = "CREATE TABLE `media` (`id` int(255) NOT NULL AUTO_INCREMENT,
+                                                                    `the_file_name` text NOT NULL,
+                                                                    `media_name` text NOT NULL,
+                                                                    PRIMARY KEY (`id`)
+                                                                    ) ENGINE=InnoDB DEFAULT CHARSET=latin1;";
+
+                                if (mysqli_query($conn, $sqlMedia)) {
+                                    $done = TRUE;
+                                }
+                            }
+                            else {
+                                echo 'sqlDownloads: ' . $conn->error;
+                            }
                         }
                         else {
                             echo 'sqlUsersUpdate Error: ' . $conn->error;

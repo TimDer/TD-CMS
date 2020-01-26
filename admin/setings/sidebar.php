@@ -5,9 +5,8 @@ if (!isset($start)) {
 }
 
 if (isset($_SESSION['user'])) {
-
     ?>
-    <h4 class="h4-color-wit">all setings</h4>
+    <h4 class="h4-color-wit">all settings</h4>
     <br>
     <p><a href="<?php echo ADMIN_URL; ?>/setings.php?command=general">General</a></p>
     <?php 
@@ -32,7 +31,6 @@ if (isset($_SESSION['user'])) {
             <p><a href="<?php echo ADMIN_URL; ?>/setings.php?command=users">Users</a></p>
         <?php
     }
-
 }
 else {
     header('Location: ' . ADMIN_URL . '/login.php');

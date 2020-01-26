@@ -26,7 +26,7 @@ if (isset($_SESSION['user'])) {
                     if (mysqli_num_rows($query) > 0) {
                         while ($row = mysqli_fetch_assoc($query)) { 
                             ?>
-                            <div class="col-sm-12">
+                            <div class="col-sm-12 pages-posts-Padding">
                                 <div class="col-sm-1">
                                     <p><?php echo $row['id']; ?></p>
                                 </div>
@@ -46,7 +46,25 @@ if (isset($_SESSION['user'])) {
                                 </div>
                                 <div class="col-sm-3">
                                     <?php if ($rowPermission['deletepages'] === 'yes') { ?>
-                                        <a href="<?php echo ADMIN_URL; ?>/setings/pages-delete.php?del-page=<?php echo $row['id']; ?>">delete: <?php echo $row['pagename']; ?></a>
+                                        <!--<a href="<?php echo ADMIN_URL; ?>/setings/pages-delete.php?del-page=<?php echo $row['id']; ?>">delete: <?php echo $row['pagename']; ?></a>-->
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#pagedelete<?php echo $row['id']; ?>">Delete: <?php echo $row['pagename']; ?></button>
+                                        <div id="pagedelete<?php echo $row['id']; ?>" class="modal fade" role="dialog">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                        <h4 class="modal-title">Delete: <?php echo $row['pagename']; ?></h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>Are you sure you want to delete: <?php echo $row['pagename']; ?></p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <a href="<?php echo ADMIN_URL; ?>/setings/pages-delete.php?del-page=<?php echo $row['id']; ?>" class="btn btn-primary">delete: <?php echo $row['pagename']; ?></a>
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     <?php } else { ?>
                                         <p>you have no permission</p>
                                     <?php } ?>
@@ -86,7 +104,7 @@ if (isset($_SESSION['user'])) {
                     if ($postsQuery->num_rows > 0) {
                         while ($rowPosts = mysqli_fetch_assoc($postsQuery)) {
                             ?>
-                            <div class="col-sm-12">
+                            <div class="col-sm-12 pages-posts-Padding">
                                 <div class="col-sm-1">
                                     <p><?php echo $rowPosts['id']; ?></p>
                                 </div>
@@ -124,7 +142,24 @@ if (isset($_SESSION['user'])) {
                                     <?php
                                         if ($rowPermission['delete_post'] === 'yes') {
                                             ?>
-                                            <a href="<?php echo ADMIN_URL ?>/setings/posts-delete.php?delete=<?php echo $rowPosts['id']; ?>">Delete: <?php echo $rowPosts['post_name']; ?></a>
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#postdelete<?php echo $rowPosts['id'] ?>">Delete: <?php echo $rowPosts['post_name'] ?></button>
+                                            <div id="postdelete<?php echo $rowPosts['id'] ?>" class="modal fade" role="dialog">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                            <h4 class="modal-title">Delete: <?php echo $rowPosts['post_name'] ?></h4>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <p>Are you sure you want to Delete: <?php echo $rowPosts['post_name'] ?></p>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <a href="<?php echo ADMIN_URL ?>/setings/posts-delete.php?delete=<?php echo $rowPosts['id']; ?>" class="btn btn-primary">Delete: <?php echo $rowPosts['post_name']; ?></a>
+                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <?php
                                         }
                                         else {

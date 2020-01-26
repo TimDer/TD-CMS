@@ -31,14 +31,16 @@ if (isset($_SESSION['user'])) {
                                             post_2,
                                             post_3,
                                             url,
-                                            date_added)
+                                            date_added,
+                                            date_edited)
                                     VALUES ('$category',
                                             '$post_name',
                                             '$POST_lable_1',
                                             '$POST_lable_2',
                                             '$POST_lable_3',
                                             '$url',
-                                            '$Added')";
+                                            '$Added',
+                                            '')";
 
     if ($conn->query($sqlpost) === TRUE) {
         header('Location: ' . ADMIN_URL . '/edit-posts.php');

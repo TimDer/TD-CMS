@@ -61,7 +61,8 @@ if (isset($_SESSION['user'])) {
                                     rsidebar,
                                     home_page,
                                     url,
-                                    post_page)
+                                    post_page,
+                                    theorder)
                 VALUES ('$pagename',
                         '$content',
                         '$lsidebarname',
@@ -70,7 +71,8 @@ if (isset($_SESSION['user'])) {
                         '$rsidebar',
                         '$homePage',
                         '$url',
-                        '$post_page')
+                        '$post_page',
+                        '0')
             ";
 
         if ($conn->query($sql) === TRUE) {

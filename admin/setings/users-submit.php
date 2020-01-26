@@ -28,6 +28,8 @@ if (isset($_SESSION['user'])) {
         $delete_post            = $_POST['delete_post'];
         $edit_general_settings  = $_POST['edit_general_settings'];
         $userid                 = $_POST['userid'];
+        $modify_media           = $_POST['modify_media'];
+        $modify_downloads       = $_POST['modify_downloads'];
 
         $sqlUser                = "UPDATE users SET user='$username',
                                                     deletepages='$delpages',
@@ -42,7 +44,9 @@ if (isset($_SESSION['user'])) {
                                                     delete_post='$delete_post',
                                                     edit_general_settings='$edit_general_settings',
                                                     add_or_edit_users='$add_or_edit_users',
-                                                    delete_this_user='$delete_this_user'
+                                                    delete_this_user='$delete_this_user',
+                                                    modify_media='$modify_media',
+                                                    modify_downloads='$modify_downloads'
                                                     WHERE id='$userid'";
 
         if ($conn->query($sqlUser) === TRUE) {
@@ -99,9 +103,13 @@ if (isset($_SESSION['user'])) {
                                             delete_post,
                                             edit_general_settings,
                                             add_or_edit_users,
+                                            modify_media,
+                                            modify_downloads,
                                             delete_this_user)
                                     VALUES ('$username',
                                             '$password',
+                                            'no',
+                                            'no',
                                             'no',
                                             'no',
                                             'no',

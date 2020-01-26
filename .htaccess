@@ -1,7 +1,5 @@
 RewriteEngine On
 
-#ErrorDocument 404 localhost:8080/404
-
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^([0-9a-zA-Z\-]+)$ index.php?page=$1 [NC]

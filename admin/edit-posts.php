@@ -28,7 +28,7 @@ if (isset($_SESSION['user'])) {
                     <div class="container-fluid text-center">    
                     <div class="row content">
                         <div class="col-sm-2 sidenav">
-                            <div class="space-in-content sidebar-admin-panel">
+                            <div class="space-in-content">
                                 <?php
                                     if ($rowPermission['add_posts'] === 'yes') {
                                         ?>

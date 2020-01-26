@@ -117,10 +117,10 @@ if (isset($_SESSION['user'])) {
                         <input type="radio" name="set_css" value="no" <?php if ($row['set_css'] === 'no') { echo 'checked'; } ?>> no
                     </p>
                 </div>
+
+
+
                 <h2>Users:</h2>
-
-
-
                 <div class="col-sm-12">
                     <p class="col-sm-2">Add or edit users:</p>
                     <p class="col-sm-10">
@@ -139,7 +139,7 @@ if (isset($_SESSION['user'])) {
 
 
 
-                <h2>general settings:</h2>
+                <h2>Other permissions:</h2>
                 <div class="col-sm-12">
                     <p class="col-sm-2">general:</p>
                     <p class="col-sm-10">
@@ -147,8 +147,24 @@ if (isset($_SESSION['user'])) {
                         <input type="radio" name="edit_general_settings" value="no" <?php if ($row['edit_general_settings'] === 'no') { echo 'checked'; } ?>> no
                     </p>
                 </div>
-
                 <br class="br-6">
+                <div class="col-sm-12">
+                    <p class="col-sm-2">modify media:</p>
+                    <p class="col-sm-10">
+                        <input type="radio" name="modify_media" value="yes" <?php if ($row['modify_media'] === 'yes') { echo 'checked'; } ?>> yes
+                        <input type="radio" name="modify_media" value="no" <?php if ($row['modify_media'] === 'no') { echo 'checked'; } ?>> no
+                    </p>
+                </div>
+                <br class="br-6">
+                <div class="col-sm-12">
+                    <p class="col-sm-2">modify downloads:</p>
+                    <p class="col-sm-10">
+                        <input type="radio" name="modify_downloads" value="yes" <?php if ($row['modify_downloads'] === 'yes') { echo 'checked'; } ?>> yes
+                        <input type="radio" name="modify_downloads" value="no" <?php if ($row['modify_downloads'] === 'no') { echo 'checked'; } ?>> no
+                    </p>
+                </div>
+                <br class="br-6">
+
 
                 <div class="col-sm-12">
                     <div class="col-sm-2"></div>

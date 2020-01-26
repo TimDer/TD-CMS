@@ -29,7 +29,7 @@ if (isset($_SESSION['user'])) {
         <form action="<?php echo ADMIN_URL; ?>/setings/general-update.php" method="POST">
             <div class="col-sm-1">
 
-                <p>sidename:</p><br>
+                <p>sitename:</p><br>
                 <p>sideslug:</p>
 
             </div>
