@@ -18,7 +18,7 @@ function get_right_sidebar_database() {
             
 
             while($row = mysqli_fetch_assoc($result)) {
-                if ($row['rsidebarname'] !== '' AND $row['rsidebar'] !== '') {
+                if ($row['rsidebarname'] !== '' OR $row['rsidebar'] !== '') {
                     echo "<h1>" . $row['rsidebarname'] . "</h1>";
                     echo "<p>" . $row['rsidebar'] . "</p>";
                 }
@@ -47,7 +47,7 @@ function get_right_sidebar_database() {
 
 
             while($row = mysqli_fetch_assoc($result)) {
-                if ($row['rsidebarname'] !== '' AND $row['rsidebar'] !== '') {
+                if ($row['rsidebarname'] !== '' OR $row['rsidebar'] !== '') {
                     echo "<h1>" . $row['rsidebarname'] . "</h1>";
                     echo "<p>" . $row['rsidebar'] . "</p>";
                 }

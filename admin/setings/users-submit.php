@@ -12,33 +12,45 @@ if (isset($_SESSION['user'])) {
 
 	if (isset($_GET['edituser'])) {
 
-        $username           = mysqli_real_escape_string($conn, $_POST['username']);
-        $password           = mysqli_real_escape_string($conn, sha1($_POST['password']));
-        $delpages           = $_POST['delpages'];
-        $set_home_page      = $_POST['set_home_page'];
-        $set_theorder       = $_POST['set_theorder'];
-        $set_footer         = $_POST['set_footer'];
-        $set_css            = $_POST['set_css'];
-        $add_or_edit_users  = $_POST['add_or_edit_users'];
-        $delete_this_user   = $_POST['delete_this_user'];
-        $userid             = $_POST['userid'];
+        $username               = mysqli_real_escape_string($conn, $_POST['username']);
+        $password               = mysqli_real_escape_string($conn, sha1($_POST['password']));
+        $delpages               = $_POST['delpages'];
+        $set_home_page          = $_POST['set_home_page'];
+        $set_theorder           = $_POST['set_theorder'];
+        $set_footer             = $_POST['set_footer'];
+        $set_css                = $_POST['set_css'];
+        $add_or_edit_users      = $_POST['add_or_edit_users'];
+        $delete_this_user       = $_POST['delete_this_user'];
+        $edit_pages             = $_POST['edit_pages'];
+        $add_pages              = $_POST['add_pages'];
+        $edit_posts             = $_POST['edit_posts'];
+        $add_posts              = $_POST['add_posts'];
+        $delete_post            = $_POST['delete_post'];
+        $edit_general_settings  = $_POST['edit_general_settings'];
+        $userid                 = $_POST['userid'];
 
-        $sqlUser            = "UPDATE users SET user='$username',
-                                                deletepages='$delpages',
-                                                set_home_page='$set_home_page',
-                                                set_theorder='$set_theorder',
-                                                set_footer='$set_footer',
-                                                set_css='$set_css',
-                                                add_or_edit_users='$add_or_edit_users',
-                                                delete_this_user='$delete_this_user'
-                                                WHERE id='$userid'";
+        $sqlUser                = "UPDATE users SET user='$username',
+                                                    deletepages='$delpages',
+                                                    set_home_page='$set_home_page',
+                                                    set_theorder='$set_theorder',
+                                                    set_footer='$set_footer',
+                                                    set_css='$set_css',
+                                                    edit_pages='$edit_pages',
+                                                    add_pages='$add_pages',
+                                                    edit_posts='$edit_posts',
+                                                    add_posts='$add_posts',
+                                                    delete_post='$delete_post',
+                                                    edit_general_settings='$edit_general_settings',
+                                                    add_or_edit_users='$add_or_edit_users',
+                                                    delete_this_user='$delete_this_user'
+                                                    WHERE id='$userid'";
 
         if ($conn->query($sqlUser) === TRUE) {
             function redirect() {
                 header('Location: ' . ADMIN_URL . '/setings.php?command=users&edit=' . $_POST['userid']);
             }
             if (!empty($_POST['password'])) {
-                $sqlPass    = "UPDATE users SET password='$password'";
+                $sqlPass    = "UPDATE users SET password='$password' WHERE id='$userid'";
                 if ($conn->query($sqlPass) === TRUE) {
                     redirect();
                     die();
@@ -80,10 +92,22 @@ if (isset($_SESSION['user'])) {
                                             set_theorder,
                                             set_footer,
                                             set_css,
+                                            edit_pages,
+                                            add_pages,
+                                            edit_posts,
+                                            add_posts,
+                                            delete_post,
+                                            edit_general_settings,
                                             add_or_edit_users,
                                             delete_this_user)
                                     VALUES ('$username',
                                             '$password',
+                                            'no',
+                                            'no',
+                                            'no',
+                                            'no',
+                                            'no',
+                                            'no',
                                             'no',
                                             'no',
                                             'no',

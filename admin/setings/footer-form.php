@@ -19,17 +19,14 @@ if (isset($_SESSION['user'])) {
     $query = mysqli_query($conn, $sql);
 
     while ($row = mysqli_fetch_assoc($query)) {
-?>
-
+        ?>
         <form action="<?php echo ADMIN_URL; ?>/setings/footer-update.php" method="POST">
             <input type="submit" value="save"><br><br>
             <p>&ltfooter class="<input style="width: 60%" type="text" name="footer-class" value="<?php echo $row['footerclass']; ?>">"&gt</p>
                 <textarea type="text" name="footer" class="textarea-size"><?php echo $row['footer']; ?></textarea>
             <p>&lt/footer&gt</p>
         </form>
-
-<?php
-
+        <?php
     }
 }
 else {

@@ -27,13 +27,29 @@ if (isset($_SESSION['user'])) {
         </div>
         <div>
             <div class="col-sm-3">
-                <p>is this the home page</p>
-                <input type="radio" name="homepage" value="no" required> no
-                <input type="radio" name="homepage" value="yes" required> yes
+                <?php
+                    if ($rowPermission['set_home_page'] === 'yes') {
+                        ?>
+                        <p>is this the home page</p>
+                        <input type="radio" name="homepage" value="no" required> no
+                        <input type="radio" name="homepage" value="yes" required> yes
+                        <?php
+                    }
+                    else {
+                        ?>
+                        <input type="hidden" name="homepage" value="no">
+                        <?php
+                    }
+                ?>
+                
             </div>
-            <div class="col-sm-9">
+            <div class="col-sm-5">
                 <p>url</p>
                 <p><?php echo BASE_URL . '/ '; ?><input type="text" name="url" required></p>
+            </div>
+            <div class="col-sm-4">
+                <p>if this is a post page, fil out this form too.</p>
+                <input type="text" name="post">
             </div>
         </div>
     <form>

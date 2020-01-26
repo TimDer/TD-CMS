@@ -26,14 +26,15 @@ if (isset($_POST['login'])) {
         else {
             if ($row = mysqli_fetch_assoc($query)) {
                 if ($password === $row['password']) {
-                    $_SESSION['user'] = $row['user'];
-                    $_SESSION['deletepages'] = $row['deletepages'];
-                    $_SESSION['set_home_page'] = $row['set_home_page'];
-                    $_SESSION['set_theorder'] = $row['set_theorder'];
-                    $_SESSION['set_footer'] = $row['set_footer'];
-                    $_SESSION['set_css'] = $row['set_css'];
-                    $_SESSION['add_or_edit_users'] = $row['add_or_edit_users'];
-                    $_SESSION['time'] = time();
+                    $_SESSION['id']                 = $row['id'];
+                    $_SESSION['user']               = $row['user'];
+                    $_SESSION['deletepages']        = $row['deletepages'];
+                    $_SESSION['set_home_page']      = $row['set_home_page'];
+                    $_SESSION['set_theorder']       = $row['set_theorder'];
+                    $_SESSION['set_footer']         = $row['set_footer'];
+                    $_SESSION['set_css']            = $row['set_css'];
+                    $_SESSION['add_or_edit_users']  = $row['add_or_edit_users'];
+                    $_SESSION['time']               = time();
                     header('Location: ' . ADMIN_URL);
                 }
                 else {

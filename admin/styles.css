@@ -103,6 +103,30 @@ body {
 .space-in-content2 {
     padding-top: 85px;
 }
+.form-container {
+    padding-bottom: 30px;
+}
+.form-container textarea {
+    resize: vertical;
+    width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* default css */
 

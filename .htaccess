@@ -1,4 +1,11 @@
 RewriteEngine On
 
+#ErrorDocument 404 http://www.tim-derksen.nl/404
+
+RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^([0-9a-zA-Z]+) index.php?page=$1 [NC,L]
+RewriteRule ^([0-9a-zA-Z]+)$ index.php?page=$1 [NC]
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([0-9a-zA-Z\-]+)/([0-9a-zA-Z\-]+)$ index.php?page=$1&cat=$2 [NC,L]

@@ -2,14 +2,15 @@
 
 $servername	= "localhost";
 $username	= "root";
-$password	= "Admin";
+$password	= "usbw";
 $dbname		= "xcms";
 
 // create connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
+//$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = mysqli_connect($servername, $username, $password ,$dbname);
 
 // Check connection
-if ($conn->connect_error) {
+if (!$conn) {
 	die("Connection failed: " . $conn->connect_error);
 }
 

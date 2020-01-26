@@ -26,6 +26,7 @@ if (isset($_SESSION['user'])) {
         // necessary stuff
         $homePage       = mysqli_real_escape_string($conn, $_POST['homepage']);
         $url            = mysqli_real_escape_string($conn, $_POST['url']);
+        $post_page      = mysqli_real_escape_string($conn, $_POST['post']);
 
 
         // Add the data to the database
@@ -36,7 +37,8 @@ if (isset($_SESSION['user'])) {
                                     lsidebar,
                                     rsidebar,
                                     home_page,
-                                    url)
+                                    url,
+                                    post_page)
                 VALUES ('$pagename',
                         '$content',
                         '$lsidebarname',
@@ -44,7 +46,8 @@ if (isset($_SESSION['user'])) {
                         '$lsidebar',
                         '$rsidebar',
                         '$homePage',
-                        '$url')
+                        '$url',
+                        '$post_page')
             ";
 
         if ($conn->query($sql) === TRUE) {

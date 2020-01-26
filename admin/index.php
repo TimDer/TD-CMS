@@ -3,7 +3,6 @@
 if (!isset($start)) {
     require_once '../start.php';
 }
-//require_once "../db.php";
 
 require ADMIN_DIR . "/view/header.php"; 
 

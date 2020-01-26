@@ -5,18 +5,22 @@ if (!isset($start)) {
 }
 
 if (isset($_SESSION['user'])) {
-    require_once BASE_DIR . '/db.php';
+    if ($rowPermission['edit_pages'] === 'yes') {
+        echo '<h4 class="h4-color-wit">List of all pages</h4>';
 
-    $selectLinkData = "SELECT * FROM page";
-    $query = mysqli_query($conn,$selectLinkData);
+        require_once BASE_DIR . '/db.php';
 
-    if ($query->num_rows > 0) {
-        while ($link = mysqli_fetch_assoc($query)) {
-            echo '<p><a href="'. ADMIN_URL . '/edit-pages.php?edit=' . $link['id'] . '">' . $link['pagename'] .'</a></p>';
+        $selectLinkData = "SELECT * FROM page";
+        $query = mysqli_query($conn,$selectLinkData);
+
+        if ($query->num_rows > 0) {
+            while ($link = mysqli_fetch_assoc($query)) {
+                echo '<p><a href="'. ADMIN_URL . '/edit-pages.php?edit=' . $link['id'] . '">' . $link['pagename'] .'</a></p>';
+            }
         }
-    }
-    else {
-        echo '<br><p class="h4-color-wit">No pages found</p>';
+        else {
+            echo '<br><p class="h4-color-wit">No pages found</p>';
+        }
     }
 }
 else {

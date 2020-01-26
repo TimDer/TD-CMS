@@ -11,7 +11,9 @@ if (isset($_SERVER['HTTPS'])) {
 } else {
     define('PROTOCOL', 'http://');
 }
-define('BASE_URL', PROTOCOL . '192.168.178.18/cms');
+//define('BASE_URL', PROTOCOL . 'localhost:8080');
+define('URL', $_SERVER['HTTP_HOST']);
+define('BASE_URL', PROTOCOL . URL);
 define('ADMIN_URL', BASE_URL . '/admin');
 define('TEMP_URL', BASE_URL . '/template');
 
