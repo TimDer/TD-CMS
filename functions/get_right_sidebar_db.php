@@ -18,8 +18,18 @@ function get_right_sidebar_database() {
             
 
             while($row = mysqli_fetch_assoc($result)) {
-                echo "<h1>" . $row['rsidebarname'] . "</h1>";
-                echo "<p>" . $row['rsidebar'] . "</p>";
+                if ($row['rsidebarname'] !== '' AND $row['rsidebar'] !== '') {
+                    echo "<h1>" . $row['rsidebarname'] . "</h1>";
+                    echo "<p>" . $row['rsidebar'] . "</p>";
+                }
+                else {
+                    if (file_exists(TEMP_DIR . '/sidebar_right.php')) {
+                        require TEMP_DIR . '/sidebar_right.php';
+                    }
+                    else {
+                        echo '<h1>No results</h1>';
+                    }
+                }
             }
         }
         else {
@@ -37,8 +47,18 @@ function get_right_sidebar_database() {
 
 
             while($row = mysqli_fetch_assoc($result)) {
-                echo "<h1>" . $row['rsidebarname'] . "</h1>";
-                echo "<p>" . $row['rsidebar'] . "</p>";
+                if ($row['rsidebarname'] !== '' AND $row['rsidebar'] !== '') {
+                    echo "<h1>" . $row['rsidebarname'] . "</h1>";
+                    echo "<p>" . $row['rsidebar'] . "</p>";
+                }
+                else {
+                    if (file_exists(TEMP_DIR . '/sidebar_right.php')) {
+                        require TEMP_DIR . '/sidebar_right.php';
+                    }
+                    else {
+                        echo '<h1>No results</h1>';
+                    }
+                }
             }
         }
         $conn->close();

@@ -12,20 +12,20 @@ if (isset($_SESSION['user'])) {
 
     if (isset($_POST['content']) AND isset($_POST['pagename'])) {
         // content
-        $content        = $_POST['content'];
-        $pagename       = $_POST['pagename'];
+        $content        = mysqli_real_escape_string($conn, $_POST['content']);
+        $pagename       = mysqli_real_escape_string($conn, $_POST['pagename']);
 
         // left sideber
-        $lsidebarname   = $_POST['lsidebarname'];
-        $lsidebar       = $_POST['lsidebar'];
+        $lsidebarname   = mysqli_real_escape_string($conn, $_POST['lsidebarname']);
+        $lsidebar       = mysqli_real_escape_string($conn, $_POST['lsidebar']);
 
         // right sidebar
-        $rsidebarname   = $_POST['rsidebarname'];
-        $rsidebar       = $_POST['rsidebar'];
+        $rsidebarname   = mysqli_real_escape_string($conn, $_POST['rsidebarname']);
+        $rsidebar       = mysqli_real_escape_string($conn, $_POST['rsidebar']);
 
         // necessary stuff
-        $homePage       = $_POST['homepage'];
-        $url            = $_POST['url'];
+        $homePage       = mysqli_real_escape_string($conn, $_POST['homepage']);
+        $url            = mysqli_real_escape_string($conn, $_POST['url']);
 
 
         // Add the data to the database

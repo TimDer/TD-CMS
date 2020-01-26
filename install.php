@@ -22,8 +22,8 @@ if (isset($_POST['submit'])) {
 
     if (mysqli_query($conn, $sqlPage) === TRUE) {
         $sqlSettings = "CREATE TABLE settings (id int(255) NOT NULL AUTO_INCREMENT,
-                                                sidename varchar(40) NOT NULL,
-                                                sideslug varchar(100) NOT NULL,
+                                                sidename text NOT NULL,
+                                                sideslug text NOT NULL,
                                                 footer text NOT NULL,
                                                 footerclass text NOT NULL,
                                                 customcss text NOT NULL,

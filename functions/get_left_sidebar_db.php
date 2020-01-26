@@ -18,8 +18,18 @@ function get_left_sidebar_database() {
 
         //display the data from the database from an array on the page to the user
         while($row = mysqli_fetch_assoc($result)) {
-            echo "<h1>" . $row['lsidebarname'] . "</h1>";
-            echo "<p>" . $row['lsidebar'] . "</p>";
+            if ($row['lsidebarname'] !== '' AND $row['lsidebar'] !== '') {
+                echo "<h1>" . $row['lsidebarname'] . "</h1>";
+                echo "<p>" . $row['lsidebar'] . "</p>";
+            }
+            else {
+                if (file_exists(TEMP_DIR . '/sidebar_left.php')) {
+                    require TEMP_DIR . '/sidebar_left.php';
+                }
+                else {
+                    echo '<h1>No results</h1>';
+                }
+            }
         }
     }
     else {
@@ -35,8 +45,18 @@ function get_left_sidebar_database() {
                             WHERE home_page = '$url' ";
         $result = mysqli_query($conn,$SelectPageTabel);
         while($row = mysqli_fetch_assoc($result)) {
-            echo "<h1>" . $row['lsidebarname'] . "</h1>";
-            echo "<p>" . $row['lsidebar'] . "</p>";
+            if ($row['lsidebarname'] !== '' AND $row['lsidebar'] !== '') {
+                echo "<h1>" . $row['lsidebarname'] . "</h1>";
+                echo "<p>" . $row['lsidebar'] . "</p>";
+            }
+            else {
+                if (file_exists(TEMP_DIR . '/sidebar_left.php')) {
+                    require TEMP_DIR . '/sidebar_left.php';
+                }
+                else {
+                    echo '<h1>No results</h1>';
+                }
+            }
         }
     }
     $conn->close();

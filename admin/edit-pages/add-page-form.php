@@ -33,7 +33,7 @@ if (isset($_SESSION['user'])) {
             </div>
             <div class="col-sm-9">
                 <p>url</p>
-                <input type="text" name="url" required>
+                <p><?php echo BASE_URL . '/ '; ?><input type="text" name="url" required></p>
             </div>
         </div>
     <form>
